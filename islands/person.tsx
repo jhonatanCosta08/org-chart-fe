@@ -1,6 +1,5 @@
 import {useState} from "https://esm.sh/stable/preact@10.15.1/denonext/hooks.js";
 
-
 interface Person {
     data: {
         id: string,
