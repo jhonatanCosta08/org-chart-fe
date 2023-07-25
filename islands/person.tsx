@@ -62,7 +62,7 @@ export default function Person(props: Person) {
     <>
         <div className='person-card-container' style={personStyles.personCarContainer}>
             <div className='position-name-container'>
-                <h1 style={personStyles.positionName}>Project Manager</h1>
+                <h1 style={personStyles.positionName}>Team leader</h1>
             </div>
 
             <div className='person-info-container' style={personStyles.personInfoContainer}>
