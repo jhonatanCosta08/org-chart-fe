@@ -96,12 +96,12 @@ export default function Person(props: PersonModel) {
             </div>
         </div>
 
-        <Batatinha hidden={!enabled} class='bg-red-50'/>
+        <SubPerson hidden={!enabled}/>
     </>
     );
 }
 
-export function Batatinha(props: JSX.HTMLAttributes) {
+export function SubPerson(props: JSX.HTMLAttributes) {
     return(
         <div {...props}>
             <div>
