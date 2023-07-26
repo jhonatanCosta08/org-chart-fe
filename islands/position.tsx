@@ -5,7 +5,7 @@ interface PositionModel {
         id: string,
         name: string
     },
-    person: any[];
+    person: [];
 }
 
 const positionStyles = {

@@ -12,7 +12,8 @@ interface PersonModel {
         email: string,
         phone: string,
         city: string,
-        photo: string
+        photo: string,
+        subPersonList: []
     }
 }
 
