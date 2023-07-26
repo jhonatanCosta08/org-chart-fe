@@ -21,6 +21,7 @@ export default async function Dashboard() {
                 <Position position={positionResp} person={personResp}/>
                 <Position position={positionResp} person={personResp}/>
                 <Position position={positionResp} person={personResp}/>
+                <Position position={positionResp} person={personResp}/>
             </div>
         </main>
     );
