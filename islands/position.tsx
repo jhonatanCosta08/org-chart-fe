@@ -1,25 +1,26 @@
-import {fetchPositionData} from "../routes/api/position.ts";
+import Person from "./person.tsx";
 
-interface Position {
-    id: string,
-    name: string,
-    personList?: any[]
+interface PositionModel {
+    position: {
+        id: string,
+        name: string
+    },
+    person: any[];
 }
 
-export const handler: Handlers<User | null> = {
-    async GET(_, ctx) {
-        const resp = await fetchPositionData();
-        if (resp.status === 404) return ctx.render(null);
-        const pos: Position = await resp;
-        return ctx.render(pos);
-    },
-};
+const positionStyles = {
+    positionContainer: {
+        width: '25%'
+    }
+}
 
-export default function Position(props: Position) {
+
+export default function Position(props: PositionModel) {
     return (
         <>
-            <div class='position-container'>
-
+            <div class='position-container' style={positionStyles.positionContainer}>
+                <p>Position name</p>
+                <Person person={props.person}/>
             </div>
         </>
     );
