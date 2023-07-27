@@ -1,7 +1,7 @@
 
 
 export async function fetchPositionData() {
-    const url = 'https://api.github.com/users/jhonCosta08';
+    const url = 'http://localhost:3000/positions';
     try {
         const response = await fetch(url);
         return await response.json();

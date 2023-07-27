@@ -14,6 +14,8 @@ const dashboardStyles = {
 export default async function Dashboard() {
     const positionResp = await fetchPositionData();
     const personResp = await  fetchPeopleData();
+    console.log('positionResp:', positionResp);
+    console.log('personResp:', personResp);
     return (
         <main>
             <div class='dashboard-container' style={dashboardStyles.dashboardContainer}>
