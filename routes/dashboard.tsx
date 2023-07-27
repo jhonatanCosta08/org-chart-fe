@@ -1,39 +1,27 @@
-import {fetchData} from "./api/position.ts";
-import {PageProps} from "https://deno.land/x/fresh@1.3.0/src/server/types.ts";
-import Person from "../islands/person.tsx";
+import {fetchPositionData} from "./api/position.ts";
+import {fetchPeopleData} from "./api/people.ts";
+import Position from "../islands/position.tsx";
 
-interface Person {
-    id: string,
-    name: string,
-    positionId: string,
-    positionName: string,
-    email: string,
-    phone: string,
-    city: string,
-    photo: string
+const dashboardStyles = {
+    dashboardContainer: {
+        display: 'flex',
+        height: '100%',
+        minHeight: '100vh',
+        padding: '1.5rem'
+    }
 }
 
-
-export const handler: Handlers<User | null> = {
-    async GET(_, ctx) {
-        const resp = await fetchData();
-        if (resp.status === 404) {
-            return ctx.render(null);
-        }
-        const person: Person = await resp;
-        return ctx.render(person);
-    },
-};
-
-export default function Dashboard({data}: PageProps<Position>) {
-    if (!data) {
-        return <div>Carregando...</div>;
-    }
-
+export default async function Dashboard() {
+    const positionResp = await fetchPositionData();
+    const personResp = await  fetchPeopleData();
     return (
         <main>
-            <div class='p-4 mx-auto max-w-screen-md`'>
-                <Person data={data} />
+            <div class='dashboard-container' style={dashboardStyles.dashboardContainer}>
+                <Position position={positionResp} person={personResp}/>
+                <Position position={positionResp} person={personResp}/>
+                <Position position={positionResp} person={personResp}/>
+                <Position position={positionResp} person={personResp}/>
+                <Position position={positionResp} person={personResp}/>
             </div>
         </main>
     );
