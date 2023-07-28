@@ -101,11 +101,11 @@ export default function Person(props: PersonModel) {
 
                 <PersonDescription class='person-description-container' email={item.email} joined={formatarData(new Date(item.createdAt))} city={item.city}/>
 
-                <div className='person-btn-container' style={personStyles.personBtnContainer}>
-                    <a onClick={toggleEnabled} style={personStyles.personBtn}>
-                        1 {icon}
-                    </a>
-                </div>
+                {/*<div className='person-btn-container' style={personStyles.personBtnContainer}>*/}
+                {/*    <a onClick={toggleEnabled} style={personStyles.personBtn}>*/}
+                {/*        1 {icon}*/}
+                {/*    </a>*/}
+                {/*</div>*/}
             </div>
         ))}
 
