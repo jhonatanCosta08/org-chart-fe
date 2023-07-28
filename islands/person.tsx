@@ -4,17 +4,20 @@ import IconChevronDown from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chev
 import {JSX} from "preact";
 
 interface PersonModel {
-    person: {
-        id: string,
-        name: string,
-        positionId: string,
-        positionName: string,
-        email: string,
-        phone: string,
-        city: string,
-        photo: string,
-        subPersonList: []
-    }
+    person: [
+        {
+            id: string,
+            name: string,
+            email: string,
+            phone: string,
+            city: string,
+            photo: string,
+            managerId: string,
+            createdAt: string,
+            updatedAt: string,
+            positionId: string
+        }
+    ]
 }
 
 const personStyles = {
@@ -66,7 +69,15 @@ function useToggle(state: boolean = false) {
     return [toggle, setToggle.bind(null, !toggle)];
 }
 
+function formatarData(data) {
+    const dia = data.getDate().toString().padStart(2, '0'); // Obtém o dia e adiciona um zero à esquerda, caso seja necessário
+    const mes = (data.getMonth() + 1).toString().padStart(2, '0'); // O mês é baseado em zero, por isso adicionamos 1, e em seguida adicionamos um zero à esquerda, se necessário
+    const ano = data.getFullYear();
+    return `${dia}/${mes}/${ano}`;
+}
+
 export default function Person(props: PersonModel) {
+    console.log('props: ', props);
     const iconClass = 'inline-block w-5 h-5 transition group-hover:translate-x-0.5';
     const [enabled, toggleEnabled] = useToggle(false);
     const [icon, setIcon] = useState(new IconChevronDown({className: iconClass}));
@@ -79,22 +90,24 @@ export default function Person(props: PersonModel) {
     }, [enabled]);
     return (
     <>
-        <div class='person-card-container' style={personStyles.personCardContainer}>
-            <h1 style={personStyles.profileName}>Project Manager</h1>
+        {props.person.map((item) => (
+            <div className='person-card-container' style={personStyles.personCardContainer}>
+                {/*<h1 style={personStyles.profileName}>Project Manager</h1>*/}
 
-            <div class='person-profile-info' style={personStyles.personProfileInfo}>
-                <img src='https://ca.slack-edge.com/T01NM46J0A0-U0201D2AM6E-26b028fc09ca-512' alt="" style={personStyles.profileImg}/>
-                <p style={personStyles.profileName}>Daniel Anhelli</p>
+                <div className='person-profile-info' style={personStyles.personProfileInfo}>
+                    <img src={item.photo} alt={item.name} style={personStyles.profileImg}/>
+                    <p style={personStyles.profileName}>{item.name}</p>
+                </div>
+
+                <PersonDescription class='person-description-container' email={item.email} joined={formatarData(new Date(item.createdAt))} city={item.city}/>
+
+                <div className='person-btn-container' style={personStyles.personBtnContainer}>
+                    <a onClick={toggleEnabled} style={personStyles.personBtn}>
+                        1 {icon}
+                    </a>
+                </div>
             </div>
-
-            <PersonDescription class='person-description-container' email='daniel.anhelli@aoatechpartners.com.br' joined='Joined in march 2020 ' city='Curitiba'/>
-
-            <div class='person-btn-container' style={personStyles.personBtnContainer}>
-                <a onClick={toggleEnabled} style={personStyles.personBtn}>
-                    1 {icon}
-                </a>
-            </div>
-        </div>
+        ))}
 
         <SubPerson hidden={!enabled}/>
     </>

@@ -1,5 +1,4 @@
 import {fetchPositionData} from "./api/position.ts";
-import {fetchPeopleData} from "./api/people.ts";
 import Position from "../islands/position.tsx";
 
 const dashboardStyles = {
@@ -13,17 +12,10 @@ const dashboardStyles = {
 
 export default async function Dashboard() {
     const positionResp = await fetchPositionData();
-    const personResp = await  fetchPeopleData();
-    console.log('positionResp:', positionResp);
-    console.log('personResp:', personResp);
     return (
         <main>
             <div class='dashboard-container' style={dashboardStyles.dashboardContainer}>
-                <Position position={positionResp} person={personResp}/>
-                <Position position={positionResp} person={personResp}/>
-                <Position position={positionResp} person={personResp}/>
-                <Position position={positionResp} person={personResp}/>
-                <Position position={positionResp} person={personResp}/>
+                <Position position={positionResp} />
             </div>
         </main>
     );
