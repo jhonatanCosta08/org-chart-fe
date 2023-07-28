@@ -1,4 +1,4 @@
-import {fetchPositionData} from "./api/position.ts";
+import {fetchPositionData} from "../api/position.ts";
 import Position from "../islands/position.tsx";
 
 const dashboardStyles = {

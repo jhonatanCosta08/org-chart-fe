@@ -77,7 +77,6 @@ function formatarData(data) {
 }
 
 export default function Person(props: PersonModel) {
-    console.log('props: ', props);
     const iconClass = 'inline-block w-5 h-5 transition group-hover:translate-x-0.5';
     const [enabled, toggleEnabled] = useToggle(false);
     const [icon, setIcon] = useState(new IconChevronDown({className: iconClass}));

@@ -18,6 +18,7 @@ const positionStyles = {
 
 
 export default function Position(props: PositionModel) {
+    console.log(props)
     return (
         <>
             {props.position.map((item) => (
