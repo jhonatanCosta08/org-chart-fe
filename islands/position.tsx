@@ -3,10 +3,9 @@ import Person from "./person.tsx";
 interface PositionModel {
     position: [{
         id: string,
-        position: string,
-        createdAt: string,
-        updatedAt: string,
-        people: []
+        name: string,
+        created_at: string,
+        person: []
     }]
 }
 
@@ -18,13 +17,12 @@ const positionStyles = {
 
 
 export default function Position(props: PositionModel) {
-    console.log(props)
     return (
         <>
             {props.position.map((item) => (
                 <div className='position-container' style={positionStyles.positionContainer}>
-                    <p>{item.position}</p>
-                    <Person person={item.people}/>
+                    <p>{item.name}</p>
+                    <Person person={item.person}/>
                 </div>
             ))}
         </>

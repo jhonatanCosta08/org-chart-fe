@@ -13,8 +13,7 @@ interface PersonModel {
             city: string,
             photo: string,
             managerId: string,
-            createdAt: string,
-            updatedAt: string,
+            created_at: string,
             positionId: string
         }
     ]
@@ -69,13 +68,6 @@ function useToggle(state: boolean = false) {
     return [toggle, setToggle.bind(null, !toggle)];
 }
 
-function formatarData(data) {
-    const dia = data.getDate().toString().padStart(2, '0'); // Obtém o dia e adiciona um zero à esquerda, caso seja necessário
-    const mes = (data.getMonth() + 1).toString().padStart(2, '0'); // O mês é baseado em zero, por isso adicionamos 1, e em seguida adicionamos um zero à esquerda, se necessário
-    const ano = data.getFullYear();
-    return `${dia}/${mes}/${ano}`;
-}
-
 export default function Person(props: PersonModel) {
     const iconClass = 'inline-block w-5 h-5 transition group-hover:translate-x-0.5';
     const [enabled, toggleEnabled] = useToggle(false);
@@ -98,7 +90,10 @@ export default function Person(props: PersonModel) {
                     <p style={personStyles.profileName}>{item.name}</p>
                 </div>
 
-                <PersonDescription class='person-description-container' email={item.email} joined={formatarData(new Date(item.createdAt))} city={item.city}/>
+                <div class='inline-block w-5 h-5 transition group-hover:translate-x-0.5'>
+                    <p style={personStyles.profileDescription}>{item.email}</p>
+                    <p style={personStyles.profileDescription}>{item.city}</p>
+                </div>
 
                 {/*<div className='person-btn-container' style={personStyles.personBtnContainer}>*/}
                 {/*    <a onClick={toggleEnabled} style={personStyles.personBtn}>*/}
@@ -119,22 +114,6 @@ export function SubPerson(props: JSX.HTMLAttributes) {
             <div>
                 <p>person here</p>
             </div>
-        </div>
-    );
-}
-
-type PersonDescriptionProps = {
-    email: string,
-    joined: string,
-    city: string
-};
-
-export function PersonDescription(props: JSX.HTMLAttributes & PersonDescriptionProps){
-    const {email, joined, city, ...remaining} = props;
-    return(
-        <div {...remaining}>
-            <p style={personStyles.profileDescription}>{email}</p>
-            <p style={personStyles.profileDescription}>{joined} <span>/ {city}</span></p>
         </div>
     );
 }

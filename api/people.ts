@@ -1,6 +1,6 @@
 
 export async function fetchPeopleData() {
-    const url = 'http://localhost:3000/person';
+    const url = 'http://localhost:4200/person';
     try {
         const response = await fetch(url);
         return await response.json();

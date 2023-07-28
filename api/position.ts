@@ -1,7 +1,7 @@
 
 
 export async function fetchPositionData() {
-    const url = 'http://localhost:3000/positions';
+    const url = 'http://localhost:4200/position';
     try {
         const response = await fetch(url);
         return await response.json();
