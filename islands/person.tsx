@@ -1,7 +1,10 @@
-import {useEffect, useState} from "preact/hooks";
+import {JSX} from "preact";
 import IconChevronUp from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-up.tsx";
 import IconChevronDown from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-down.tsx";
-import {JSX} from "preact";
+import IconMail from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/mail.tsx"
+import IconMapPin from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/map-pin.tsx"
+import IconBriefcase from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/briefcase.tsx"
+
 
 interface PersonModel {
     person: [
@@ -14,7 +17,8 @@ interface PersonModel {
             photo: string,
             managerId: string,
             created_at: string,
-            positionId: string
+            positionId: string,
+            personPositionName: string
         }
     ]
 }
@@ -25,7 +29,7 @@ const personStyles = {
         boxShadow: '0 0 6px #5B5B5B',
         backgroundColor: '#eaeaea',
         padding: '0.5rem',
-        margin: '0.5rem',
+        margin: '1rem 0.5rem',
     },
     personProfileInfo: {
         display: 'flex',
@@ -35,12 +39,12 @@ const personStyles = {
         marginBottom: '0.8rem'
     },
     profileImg: {
-        width: '20%',
-        borderRadius: '10px',
+        width: '15%',
+        borderRadius: '50%',
         marginRight: '0.5rem'
     },
     profileName: {
-        fontSize: '1rem',
+        fontSize: '1.2rem',
         letterSpacing: '2px',
         fontWeight: '600',
         color: '#000'
@@ -60,60 +64,41 @@ const personStyles = {
         border: '1px solid #000',
         margin: '0.3rem',
         padding: '0.3rem',
-    }
-}
-
-function useToggle(state: boolean = false) {
-    const [toggle, setToggle] = useState(state);
-    return [toggle, setToggle.bind(null, !toggle)];
+    },
+    personPositionNameText: {
+        fontSize: '0.8rem',
+        letterSpacing: '1px',
+        fontWeight: '400',
+        color: '#737373',
+        display: 'contents',
+        alignItems: 'center'
+    },
 }
 
 export default function Person(props: PersonModel) {
-    const iconClass = 'inline-block w-5 h-5 transition group-hover:translate-x-0.5';
-    const [enabled, toggleEnabled] = useToggle(false);
-    const [icon, setIcon] = useState(new IconChevronDown({className: iconClass}));
-    useEffect(() => {
-        if(enabled) {
-            setIcon(new IconChevronDown({className: iconClass}));
-        }else {
-            setIcon(new IconChevronUp({className: iconClass}));
-        }
-    }, [enabled]);
+    console.log('props: ', props);
     return (
     <>
-        {props.person.map((item) => (
-            <div className='person-card-container' style={personStyles.personCardContainer}>
-                {/*<h1 style={personStyles.profileName}>Project Manager</h1>*/}
+        {
+            props.person.map((item) => (
+                <>
+                    <div className='person-card-container' style={personStyles.personCardContainer}>
+                        <div className='person-profile-info' style={personStyles.personProfileInfo}>
+                            <img src={item.photo} alt={item.name} style={personStyles.profileImg}/>
+                            <p style={personStyles.profileName}>
+                                {item.name} <br/>
+                                <p style={personStyles.personPositionNameText}><IconBriefcase class="inline-block w-4 h-4"/> <em>{item.personPositionName}</em></p>
+                            </p>
+                        </div>
 
-                <div className='person-profile-info' style={personStyles.personProfileInfo}>
-                    <img src={item.photo} alt={item.name} style={personStyles.profileImg}/>
-                    <p style={personStyles.profileName}>{item.name}</p>
-                </div>
-
-                <div class='inline-block w-5 h-5 transition group-hover:translate-x-0.5'>
-                    <p style={personStyles.profileDescription}>{item.email}</p>
-                    <p style={personStyles.profileDescription}>{item.city}</p>
-                </div>
-
-                {/*<div className='person-btn-container' style={personStyles.personBtnContainer}>*/}
-                {/*    <a onClick={toggleEnabled} style={personStyles.personBtn}>*/}
-                {/*        1 {icon}*/}
-                {/*    </a>*/}
-                {/*</div>*/}
-            </div>
-        ))}
-
-        <SubPerson hidden={!enabled}/>
+                        <div>
+                            <p style={personStyles.profileDescription}><IconMail class="inline-block w-4 h-4" /> {item.email}</p>
+                            <p style={personStyles.profileDescription}><IconMapPin  class="inline-block w-4 h-4" /> {item.city}</p>
+                        </div>
+                    </div>
+                </>
+            ))
+        }
     </>
-    );
-}
-
-export function SubPerson(props: JSX.HTMLAttributes) {
-    return(
-        <div {...props}>
-            <div>
-                <p>person here</p>
-            </div>
-        </div>
     );
 }

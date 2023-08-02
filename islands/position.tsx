@@ -42,7 +42,6 @@ function hexToRgba(hex) {
 
 
 export default function Position(props: PositionModel) {
-    console.log('pos: ', props);
     return (
         <>
             {props.position.map((item) => (
