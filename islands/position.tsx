@@ -1,4 +1,4 @@
-import Person from "./person.tsx";
+import {People} from "./person.tsx";
 
 interface PositionModel {
     position: [{
@@ -54,7 +54,7 @@ export default function Position(props: PositionModel) {
                         <p style={positionStyles.textStyles}>{item.name}</p>
                         <p style={positionStyles.textStyles}>{item.person.length}</p>
                     </div>
-                    <Person person={item.person}/>
+                    <People person={item.person}/>
                 </div>
             ))}
         </>

@@ -3,25 +3,29 @@ import IconMail from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/mail.tsx"
 import IconMapPin from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/map-pin.tsx"
 import IconBriefcase from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/briefcase.tsx"
 import {getPersonById} from "../api/people.ts";
+import IconChevronUp from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-up.tsx";
+import IconChevronDown from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-down.tsx";
+import {useState} from "https://esm.sh/stable/preact@10.15.1/denonext/hooks.js";
 
 
 interface PersonModel {
-    person: [
-        {
-            id: string,
-            name: string,
-            email: string,
-            phone: string,
-            city: string,
-            photo: string,
-            managerId: string,
-            created_at: string,
-            positionId: string,
-            personPositionName: string,
-            personDescription: string,
-            joinedDate: string
-        }
-    ]
+    id: string,
+    name: string,
+    email: string,
+    phone: string,
+    city: string,
+    photo: string,
+    managerId: string,
+    created_at: string,
+    positionId: string,
+    personPositionName: string,
+    personDescription: string,
+    joinedDate: string,
+    person: PersonModel[]
+}
+
+interface PersonList {
+    person: PersonModel[]
 }
 
 const personStyles = {
@@ -91,32 +95,61 @@ async function showPersonDetails(person) {
 }
 
 export default function Person(props: PersonModel) {
-    return (
-    <>
-        {
-            props.person.map((item) => (
-                <>
-                    <div class='person-card-container' style={personStyles.personCardContainer}>
-                        <div class='person-profile-info' style={personStyles.personProfileInfo}>
-                            <img src={item.photo} alt={item.name} style={personStyles.profileImg}/>
-                            <p style={personStyles.profileName}>
-                                {item.name} <br/>
-                                <p style={personStyles.personPositionNameText}><IconBriefcase class="inline-block w-4 h-4"/> <em>{item.personPositionName}</em></p>
-                            </p>
-                        </div>
-
-                        <div class='person-dedscription-items'>
-                            <p style={personStyles.profileDescription}><IconMail class="inline-block w-4 h-4" /> {item.email}</p>
-                            <p style={personStyles.profileDescription}><IconMapPin  class="inline-block w-4 h-4" /> {item.city}</p>
-                        </div>
-
-                        <div class='person-icons' style={personStyles.personIconsContainer}>
-                            <a style={personStyles.personIcon} onClick={() => showPersonDetails(item)}><IconEye class="inline-block w-6 h-6"/></a>
-                        </div>
-                    </div>
-                </>
-            ))
+    const [minions, setMinions] = useState([]);
+    async function toggleMinions(person) {
+        if(minions.length) {
+            setMinions([]);
+        }else {
+            setMinions(person.person || []);
+            const personRes = await getPersonById(person.id);
+            setMinions(personRes.person);
         }
-    </>
+    }
+    const {id, name, photo, personPositionName, email, city, person} = props;
+    return (
+        <>
+            <div className='person-card-container' style={personStyles.personCardContainer}>
+                <div className='person-profile-info' style={personStyles.personProfileInfo}>
+                    <img src={photo} alt={name} style={personStyles.profileImg}/>
+                    <p style={personStyles.profileName}>
+                        {name} <br/>
+                        <p style={personStyles.personPositionNameText}><IconBriefcase class="inline-block w-4 h-4"/>
+                            <em>{personPositionName}</em></p>
+                    </p>
+                </div>
+
+                <div className='person-dedscription-items'>
+                    <p style={personStyles.profileDescription} class='truncate'><IconMail class="inline-block w-4 h-4"/> {email}</p>
+                    <p style={personStyles.profileDescription}><IconMapPin class="inline-block w-4 h-4"/> {city}</p>
+                </div>
+
+                <div className='person-icons' style={personStyles.personIconsContainer}>
+                    <a style={personStyles.personIcon} onClick={() => showPersonDetails(props)}><IconEye
+                        class="inline-block w-6 h-6"/>
+                    </a>
+                    <a style={personStyles.personIcon} onClick={() => toggleMinions(props)} className={person?.length ? '' : 'hidden'}>
+                        {minions.length ? <IconChevronUp class="inline-block w-6 h-6"/> : <IconChevronDown class="inline-block w-6 h-6"/>}
+                    </a>
+                </div>
+            </div>
+
+            <div class='pl-4'>
+                <People person={minions}/>
+            </div>
+        </>
+    );
+}
+
+
+
+export function People({person}: PersonModel[]) {
+    return (
+        <>
+            {
+                person.map((item) => (
+                    <Person {...item}/>
+                ))
+            }
+        </>
     );
 }
