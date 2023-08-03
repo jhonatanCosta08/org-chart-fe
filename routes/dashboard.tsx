@@ -1,11 +1,14 @@
-import {fetchPositionData, getAllPositions} from "../api/position.ts";
+import {getAllPositions} from "../api/position.ts";
 import Position from "../islands/position.tsx";
 
 const dashboardStyles = {
     dashboardContainer: {
-        height: '100%',
-        minHeight: '100vh',
+        height: '100vh',
         padding: '1.5rem',
+        width: '100%',
+        overflowX: 'scroll',
+        overflowY: 'scroll',
+        backgroundColor: 'rgba(109, 207, 246, 0.3)',
     },
     positionContainer: {
         display: 'flex',

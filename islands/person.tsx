@@ -17,7 +17,9 @@ interface PersonModel {
             managerId: string,
             created_at: string,
             positionId: string,
-            personPositionName: string
+            personPositionName: string,
+            personDescription: string,
+            joinedDate: string
         }
     ]
 }
@@ -26,7 +28,7 @@ const personStyles = {
     personCardContainer: {
         borderRadius: '5px',
         boxShadow: '0 0 6px #5B5B5B',
-        backgroundColor: '#eaeaea',
+        backgroundColor: '#fff',
         padding: '0.5rem',
         margin: '1rem 0.5rem',
     },
