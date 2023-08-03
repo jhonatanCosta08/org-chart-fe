@@ -1,4 +1,4 @@
-import {fetchPositionData} from "../api/position.ts";
+import {fetchPositionData, getAllPositions} from "../api/position.ts";
 import Position from "../islands/position.tsx";
 
 const dashboardStyles = {
@@ -24,7 +24,7 @@ const dashboardStyles = {
 }
 
 export default async function Dashboard() {
-    const positionResp = await fetchPositionData();
+    const positionResp = await getAllPositions();
     return (
         <main>
             <div class='dashboard-container' style={dashboardStyles.dashboardContainer}>

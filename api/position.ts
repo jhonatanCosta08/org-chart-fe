@@ -1,6 +1,6 @@
 
 
-export async function fetchPositionData() {
+export async function getAllPositions() {
     const url = 'http://localhost:4200/position';
     try {
         const response = await fetch(url);

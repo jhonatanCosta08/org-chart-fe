@@ -1,9 +1,8 @@
-import {JSX} from "preact";
-import IconChevronUp from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-up.tsx";
-import IconChevronDown from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-down.tsx";
+import IconEye from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/eye.tsx"
 import IconMail from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/mail.tsx"
 import IconMapPin from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/map-pin.tsx"
 import IconBriefcase from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/briefcase.tsx"
+import {getPersonById} from "../api/people.ts";
 
 
 interface PersonModel {
@@ -73,17 +72,30 @@ const personStyles = {
         display: 'contents',
         alignItems: 'center'
     },
+    personIconsContainer: {
+        textAlign: 'end'
+    },
+    personIcon: {
+        color: '#a1a1a1',
+        cursor: 'pointer'
+    }
+}
+
+async function showPersonDetails(person) {
+    if(person) {
+        const personRes = await getPersonById(person.id);
+        console.log('personRes: ', personRes);
+    }
 }
 
 export default function Person(props: PersonModel) {
-    console.log('props: ', props);
     return (
     <>
         {
             props.person.map((item) => (
                 <>
-                    <div className='person-card-container' style={personStyles.personCardContainer}>
-                        <div className='person-profile-info' style={personStyles.personProfileInfo}>
+                    <div class='person-card-container' style={personStyles.personCardContainer}>
+                        <div class='person-profile-info' style={personStyles.personProfileInfo}>
                             <img src={item.photo} alt={item.name} style={personStyles.profileImg}/>
                             <p style={personStyles.profileName}>
                                 {item.name} <br/>
@@ -91,9 +103,13 @@ export default function Person(props: PersonModel) {
                             </p>
                         </div>
 
-                        <div>
+                        <div class='person-dedscription-items'>
                             <p style={personStyles.profileDescription}><IconMail class="inline-block w-4 h-4" /> {item.email}</p>
                             <p style={personStyles.profileDescription}><IconMapPin  class="inline-block w-4 h-4" /> {item.city}</p>
+                        </div>
+
+                        <div class='person-icons' style={personStyles.personIconsContainer}>
+                            <a style={personStyles.personIcon} onClick={() => showPersonDetails(item)}><IconEye class="inline-block w-6 h-6"/></a>
                         </div>
                     </div>
                 </>
