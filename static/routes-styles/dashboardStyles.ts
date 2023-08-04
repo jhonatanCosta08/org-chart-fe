@@ -18,7 +18,7 @@ export const dashboardStyles = {
     dashboadTitle: {
         fontSize: '2rem',
         letterSpacing: '1px',
-        textTransform: 'capitalize',
+        textTransform: 'uppercase',
         fontWeight: 500
     }
 }
