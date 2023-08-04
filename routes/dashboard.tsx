@@ -1,7 +1,17 @@
+import {PositionModel} from "../interfaces/PositionModel.ts";
 import {getAllPositions} from "../api/position.ts";
+import {dashboardStyles, drawerSyle} from "../static/routes-styles/dashboardStyles.ts";
 import Position from "../islands/position/position.tsx";
-import {dashboardStyles, drawerSyle} from "../static/routes-styles/dashboardStyles.ts"
 import {getPersonById} from "../api/person.ts";
+
+export const handler: Handlers<User | null> = {
+    async GET(_, ctx) {
+        const resp = await getAllPositions();
+        if (resp.status === 404) return ctx.render(null);
+        const position = await resp;
+        return ctx.render(position);
+    },
+};
 
 export async function showPersonDetails(person) {
     if(person) {
@@ -10,17 +20,21 @@ export async function showPersonDetails(person) {
     }
 }
 
-export default async function Dashboard() {
-    const positionResp = await getAllPositions();
+export default function Dashboard({data}: PageProps<PositionModel[]>) {
+    if (!data) {
+        return <div>Loading...</div>;
+    }
+
+
     return (
         <main>
-            <div class='dashboard-container' style={dashboardStyles.dashboardContainer}>
-                <div class='drawer-container' style={drawerSyle.drawerContainer}>
+            <div className='dashboard-container' style={dashboardStyles.dashboardContainer}>
+                <div className='drawer-container' style={drawerSyle.drawerContainer}>
                     <p>Drawer here...</p>
                 </div>
 
-                <div class='position-container' style={dashboardStyles.positionContainer}>
-                    <Position position={positionResp} />
+                <div className='position-container' style={dashboardStyles.positionContainer}>
+                    <Position position={data} />
                 </div>
             </div>
         </main>
