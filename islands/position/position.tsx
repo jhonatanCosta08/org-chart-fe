@@ -1,35 +1,6 @@
-import {People} from "./person.tsx";
-
-interface PositionModel {
-    position: [{
-        id: string,
-        name: string,
-        created_at: string,
-        person: [],
-        positionColor: string
-    }]
-}
-
-const positionStyles = {
-    positionContainer: {
-        width: '25%',
-        opacity: '1'
-    },
-    positionBox: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '1rem',
-        margin: '0 0.5rem 1.5rem 0.5rem',
-        borderRadius: '5px'
-    },
-    textStyles: {
-        fontSize: '1rem',
-        letterSpacing: '1px',
-        textTransform: 'capitalize',
-        fontWeight: 600
-    }
-}
+import {People} from "../people/people.tsx";
+import {PositionModel} from "../../interfaces/PositionModel.ts";
+import {positionStyles} from "./positionStyles.ts"
 
 function hexToRgba(hex) {
     if(!hex.includes('rgb')) {

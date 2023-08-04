@@ -1,8 +1,9 @@
+import {Endpoints} from "../endpoints.ts";
+
 
 export async function getPersonById(id: string) {
-    const url = `http://localhost:4200/person/${id}`;
     try {
-        const response = await fetch(url);
+        const response = await fetch(Endpoints.getPersonById(id));
         return await response.json();
     } catch (error) {
         console.error('Ocorreu um erro:', error);

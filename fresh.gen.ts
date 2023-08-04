@@ -10,8 +10,11 @@ import * as $4 from "./routes/person/[id].ts";
 import * as $5 from "./routes/person/index.ts";
 import * as $6 from "./routes/position/[id].ts";
 import * as $7 from "./routes/position/index.ts";
-import * as $$0 from "./islands/person.tsx";
-import * as $$1 from "./islands/position.tsx";
+import * as $$0 from "./islands/people/people.tsx";
+import * as $$1 from "./islands/person/person.tsx";
+import * as $$2 from "./islands/person/personStyles.ts";
+import * as $$3 from "./islands/position/position.tsx";
+import * as $$4 from "./islands/position/positionStyles.ts";
 
 const manifest = {
   routes: {
@@ -25,8 +28,11 @@ const manifest = {
     "./routes/position/index.ts": $7,
   },
   islands: {
-    "./islands/person.tsx": $$0,
-    "./islands/position.tsx": $$1,
+    "./islands/people/people.tsx": $$0,
+    "./islands/person/person.tsx": $$1,
+    "./islands/person/personStyles.ts": $$2,
+    "./islands/position/position.tsx": $$3,
+    "./islands/position/positionStyles.ts": $$4,
   },
   baseUrl: import.meta.url,
 };

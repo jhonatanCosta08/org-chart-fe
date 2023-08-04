@@ -1,9 +1,9 @@
+import {Endpoints} from "../endpoints.ts";
 
 
 export async function getAllPositions() {
-    const url = 'http://localhost:4200/position';
     try {
-        const response = await fetch(url);
+        const response = await fetch(Endpoints.getAllPositions());
         return await response.json();
     } catch (error) {
         console.error('Ocorreu um erro:', error);
