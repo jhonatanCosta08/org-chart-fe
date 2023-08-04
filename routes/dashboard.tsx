@@ -1,8 +1,8 @@
 import {PositionModel} from "../interfaces/PositionModel.ts";
-import {getAllPositions} from "../api/position.ts";
+import {getAllPositions} from "../services/position.service.ts";
 import {dashboardStyles, drawerSyle} from "../static/routes-styles/dashboardStyles.ts";
 import Position from "../islands/position/position.tsx";
-import {getPersonById} from "../api/person.ts";
+import {getPersonById} from "../services/person.service.ts";
 
 export const handler: Handlers<User | null> = {
     async GET(_, ctx) {
@@ -15,8 +15,7 @@ export const handler: Handlers<User | null> = {
 
 export async function showPersonDetails(person) {
     if(person) {
-        const personRes = await getPersonById(person.id);
-        console.log('dashboard person: ', personRes);
+        return await getPersonById(person.id);
     }
 }
 
@@ -24,7 +23,6 @@ export default function Dashboard({data}: PageProps<PositionModel[]>) {
     if (!data) {
         return <div>Loading...</div>;
     }
-
 
     return (
         <main>

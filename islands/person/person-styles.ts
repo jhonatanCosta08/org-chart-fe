@@ -53,6 +53,13 @@ export const personStyles = {
     },
     personIcon: {
         color: '#a1a1a1',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        border: '1px solid #a1a1a1',
+        padding: '3px 4px 3px 8px'
+    },
+    showDetailIcon: {
+        color: '#a1a1a1',
+        cursor: 'pointer',
+        marginRight: '10px'
     }
 }

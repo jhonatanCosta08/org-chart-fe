@@ -1,6 +1,6 @@
 import {People} from "../people/people.tsx";
 import {PositionModel} from "../../interfaces/PositionModel.ts";
-import {positionStyles} from "./positionStyles.ts"
+import {positionStyles} from "./position-styles.ts"
 
 function hexToRgba(hex) {
     if(!hex.includes('rgb')) {

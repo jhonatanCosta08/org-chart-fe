@@ -2,13 +2,13 @@ import IconEye from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/eye.tsx"
 import IconMail from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/mail.tsx"
 import IconMapPin from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/map-pin.tsx"
 import IconBriefcase from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/briefcase.tsx"
-import {getPersonById} from "../../api/person.ts";
+import {getPersonById} from "../../services/person.service.ts";
 import IconChevronUp from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-up.tsx";
 import IconChevronDown from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-down.tsx";
 import {useState} from "https://esm.sh/stable/preact@10.15.1/denonext/hooks.js";
 import {People} from "../people/people.tsx";
 import {PersonModel} from "../../interfaces/PersonModel.ts";
-import {personStyles} from "./personStyles.ts"
+import {personStyles} from "./person-styles.ts"
 import {showPersonDetails} from "../../routes/dashboard.tsx";
 
 export default function Person(props: PersonModel) {
@@ -41,10 +41,11 @@ export default function Person(props: PersonModel) {
                 </div>
 
                 <div className='person-icons' style={personStyles.personIconsContainer}>
-                    <a style={personStyles.personIcon} onClick={() => showPersonDetails(props)}><IconEye
+                    <a style={personStyles.showDetailIcon} onClick={() => showPersonDetails(props)}><IconEye
                         class="inline-block w-6 h-6"/>
                     </a>
                     <a style={personStyles.personIcon} onClick={() => toggleMinions(props)} className={person?.length ? '' : 'hidden'}>
+                        {person?.length}
                         {minions.length ? <IconChevronUp class="inline-block w-6 h-6"/> : <IconChevronDown class="inline-block w-6 h-6"/>}
                     </a>
                 </div>

@@ -11,10 +11,10 @@ import * as $5 from "./routes/person/index.ts";
 import * as $6 from "./routes/position/[id].ts";
 import * as $7 from "./routes/position/index.ts";
 import * as $$0 from "./islands/people/people.tsx";
-import * as $$1 from "./islands/person/person.tsx";
-import * as $$2 from "./islands/person/personStyles.ts";
-import * as $$3 from "./islands/position/position.tsx";
-import * as $$4 from "./islands/position/positionStyles.ts";
+import * as $$1 from "./islands/person/person-styles.ts";
+import * as $$2 from "./islands/person/person.tsx";
+import * as $$3 from "./islands/position/position-styles.ts";
+import * as $$4 from "./islands/position/position.tsx";
 
 const manifest = {
   routes: {
@@ -29,10 +29,10 @@ const manifest = {
   },
   islands: {
     "./islands/people/people.tsx": $$0,
-    "./islands/person/person.tsx": $$1,
-    "./islands/person/personStyles.ts": $$2,
-    "./islands/position/position.tsx": $$3,
-    "./islands/position/positionStyles.ts": $$4,
+    "./islands/person/person-styles.ts": $$1,
+    "./islands/person/person.tsx": $$2,
+    "./islands/position/position-styles.ts": $$3,
+    "./islands/position/position.tsx": $$4,
   },
   baseUrl: import.meta.url,
 };
