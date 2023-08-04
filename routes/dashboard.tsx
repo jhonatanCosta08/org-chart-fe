@@ -1,6 +1,14 @@
 import {getAllPositions} from "../api/position.ts";
 import Position from "../islands/position/position.tsx";
 import {dashboardStyles} from "../static/routes-styles/dashboardStyles.ts"
+import {getPersonById} from "../api/person.ts";
+
+export async function showPersonDetails(person) {
+    if(person) {
+        const personRes = await getPersonById(person.id);
+        console.log('dash personRes: ', personRes);
+    }
+}
 
 export default async function Dashboard() {
     const positionResp = await getAllPositions();

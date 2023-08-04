@@ -9,13 +9,7 @@ import {useState} from "https://esm.sh/stable/preact@10.15.1/denonext/hooks.js";
 import {People} from "../people/people.tsx";
 import {PersonModel} from "../../interfaces/PersonModel.ts";
 import {personStyles} from "./personStyles.ts"
-
-async function showPersonDetails(person) {
-    if(person) {
-        const personRes = await getPersonById(person.id);
-        console.log('personRes: ', personRes);
-    }
-}
+import {showPersonDetails} from "../../routes/dashboard.tsx";
 
 export default function Person(props: PersonModel) {
     const [minions, setMinions] = useState([]);
