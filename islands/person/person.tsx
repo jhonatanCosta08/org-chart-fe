@@ -5,13 +5,22 @@ import IconBriefcase from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/briefc
 import {getPersonById} from "../../services/person.service.ts";
 import IconChevronUp from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-up.tsx";
 import IconChevronDown from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-down.tsx";
-import {useState} from "https://esm.sh/stable/preact@10.15.1/denonext/hooks.js";
+import {useContext, useState} from "https://esm.sh/stable/preact@10.15.1/denonext/hooks.js";
 import {People} from "../people/people.tsx";
 import {PersonModel} from "../../interfaces/PersonModel.ts";
 import {personStyles} from "./person-styles.ts"
-import {showPersonDetails} from "../../routes/dashboard.tsx";
+import {SelectedPerson} from "../../contexts/selectedPerson.ts";
+
 
 export default function Person(props: PersonModel) {
+    const personContext = useContext(SelectedPerson);
+    async function showPersonDetails(personProp) {
+        if(personProp) {
+            const personInfo =  await getPersonById(personProp.id);
+            personContext.setPerson(personInfo);
+            console.log('person: ', personInfo);
+        }
+    }
     const [minions, setMinions] = useState([]);
     async function toggleMinions(person) {
         if(minions.length) {

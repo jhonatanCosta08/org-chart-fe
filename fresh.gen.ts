@@ -10,11 +10,13 @@ import * as $4 from "./routes/person/[id].ts";
 import * as $5 from "./routes/person/index.ts";
 import * as $6 from "./routes/position/[id].ts";
 import * as $7 from "./routes/position/index.ts";
-import * as $$0 from "./islands/people/people.tsx";
-import * as $$1 from "./islands/person/person-styles.ts";
-import * as $$2 from "./islands/person/person.tsx";
-import * as $$3 from "./islands/position/position-styles.ts";
-import * as $$4 from "./islands/position/position.tsx";
+import * as $$0 from "./islands/SelectedPersonProvider.tsx";
+import * as $$1 from "./islands/drawer/drawer.tsx";
+import * as $$2 from "./islands/people/people.tsx";
+import * as $$3 from "./islands/person/person-styles.ts";
+import * as $$4 from "./islands/person/person.tsx";
+import * as $$5 from "./islands/position/position-styles.ts";
+import * as $$6 from "./islands/position/position.tsx";
 
 const manifest = {
   routes: {
@@ -28,11 +30,13 @@ const manifest = {
     "./routes/position/index.ts": $7,
   },
   islands: {
-    "./islands/people/people.tsx": $$0,
-    "./islands/person/person-styles.ts": $$1,
-    "./islands/person/person.tsx": $$2,
-    "./islands/position/position-styles.ts": $$3,
-    "./islands/position/position.tsx": $$4,
+    "./islands/SelectedPersonProvider.tsx": $$0,
+    "./islands/drawer/drawer.tsx": $$1,
+    "./islands/people/people.tsx": $$2,
+    "./islands/person/person-styles.ts": $$3,
+    "./islands/person/person.tsx": $$4,
+    "./islands/position/position-styles.ts": $$5,
+    "./islands/position/position.tsx": $$6,
   },
   baseUrl: import.meta.url,
 };
