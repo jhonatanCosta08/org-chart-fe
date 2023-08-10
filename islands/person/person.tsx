@@ -9,16 +9,16 @@ import {useContext, useState} from "https://esm.sh/stable/preact@10.15.1/denonex
 import {People} from "../people/people.tsx";
 import {PersonModel} from "../../interfaces/PersonModel.ts";
 import {personStyles} from "./person-styles.ts"
-import {SelectedPerson} from "../../contexts/selectedPerson.ts";
+import {SelectedPerson} from "./selectedPerson.ts";
 
 
 export default function Person(props: PersonModel) {
     const personContext = useContext(SelectedPerson);
-    async function showPersonDetails(personProp) {
+    async function showPersonDetails(personProp): Promise<void> {
         if(personProp) {
             const personInfo =  await getPersonById(personProp.id);
             personContext.setPerson(personInfo);
-            console.log('person: ', personInfo);
+            personContext.setSelected(true);
         }
     }
     const [minions, setMinions] = useState([]);
