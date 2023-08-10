@@ -6,7 +6,6 @@ export interface PersonModel {
     city: string,
     photo: string,
     managerId: string,
-    created_at: string,
     positionId: string,
     personPositionName: string,
     personDescription: string,

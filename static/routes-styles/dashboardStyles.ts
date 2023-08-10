@@ -24,23 +24,3 @@ export const dashboardStyles = {
         fontWeight: 500
     }
 }
-
-export const drawerSyle = {
-    drawerContainer: {
-        width: '15%',
-        height: '100%',
-        maxHeight: '100vh',
-        backgroundColor: '#cecece',
-        boxShadow: '-1px 0px 5px rgba(0, 0, 0, 0.2)',
-        transition: 'transform 0.3s ease',
-        padding: '1rem'
-    },
-    drawerContainerOpen: {
-        visibility: 'visible',
-        transition: 'transform 0.3s ease',
-    },
-    drawerContainerClose: {
-        visibility: 'hidden',
-        transition: 'transform 0.3s ease',
-    }
-}
