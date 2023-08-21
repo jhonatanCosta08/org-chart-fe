@@ -12,7 +12,6 @@ import {PersonModel} from "../../interfaces/PersonModel.ts";
 export default function Drawer() {
     const context = useContext(SelectedPerson);
     const person: PersonModel = context.person
-    console.log('per: ', person)
     function hideDrawer(): void {
         context.setSelected(false);
     }

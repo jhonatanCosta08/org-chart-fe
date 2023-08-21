@@ -6,19 +6,21 @@ import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/dashboard.tsx";
 import * as $3 from "./routes/index.tsx";
-import * as $4 from "./routes/person/[id].ts";
-import * as $5 from "./routes/person/index.ts";
-import * as $6 from "./routes/position/[id].ts";
-import * as $7 from "./routes/position/index.ts";
+import * as $4 from "./routes/login.tsx";
+import * as $5 from "./routes/person/[id].ts";
+import * as $6 from "./routes/person/index.ts";
+import * as $7 from "./routes/position/[id].ts";
+import * as $8 from "./routes/position/index.ts";
 import * as $$0 from "./islands/drawer/drawer-styles.ts";
 import * as $$1 from "./islands/drawer/drawer.tsx";
-import * as $$2 from "./islands/people/people.tsx";
-import * as $$3 from "./islands/person/SelectedPersonProvider.tsx";
-import * as $$4 from "./islands/person/person-styles.ts";
-import * as $$5 from "./islands/person/person.tsx";
-import * as $$6 from "./islands/person/selectedPerson.ts";
-import * as $$7 from "./islands/position/position-styles.ts";
-import * as $$8 from "./islands/position/position.tsx";
+import * as $$2 from "./islands/login-island/login-island.tsx";
+import * as $$3 from "./islands/people/people.tsx";
+import * as $$4 from "./islands/person/SelectedPersonProvider.tsx";
+import * as $$5 from "./islands/person/person-styles.ts";
+import * as $$6 from "./islands/person/person.tsx";
+import * as $$7 from "./islands/person/selectedPerson.ts";
+import * as $$8 from "./islands/position/position-styles.ts";
+import * as $$9 from "./islands/position/position.tsx";
 
 const manifest = {
   routes: {
@@ -26,21 +28,23 @@ const manifest = {
     "./routes/_app.tsx": $1,
     "./routes/dashboard.tsx": $2,
     "./routes/index.tsx": $3,
-    "./routes/person/[id].ts": $4,
-    "./routes/person/index.ts": $5,
-    "./routes/position/[id].ts": $6,
-    "./routes/position/index.ts": $7,
+    "./routes/login.tsx": $4,
+    "./routes/person/[id].ts": $5,
+    "./routes/person/index.ts": $6,
+    "./routes/position/[id].ts": $7,
+    "./routes/position/index.ts": $8,
   },
   islands: {
     "./islands/drawer/drawer-styles.ts": $$0,
     "./islands/drawer/drawer.tsx": $$1,
-    "./islands/people/people.tsx": $$2,
-    "./islands/person/SelectedPersonProvider.tsx": $$3,
-    "./islands/person/person-styles.ts": $$4,
-    "./islands/person/person.tsx": $$5,
-    "./islands/person/selectedPerson.ts": $$6,
-    "./islands/position/position-styles.ts": $$7,
-    "./islands/position/position.tsx": $$8,
+    "./islands/login-island/login-island.tsx": $$2,
+    "./islands/people/people.tsx": $$3,
+    "./islands/person/SelectedPersonProvider.tsx": $$4,
+    "./islands/person/person-styles.ts": $$5,
+    "./islands/person/person.tsx": $$6,
+    "./islands/person/selectedPerson.ts": $$7,
+    "./islands/position/position-styles.ts": $$8,
+    "./islands/position/position.tsx": $$9,
   },
   baseUrl: import.meta.url,
 };
