@@ -41,7 +41,7 @@ export default function LoginIsland() {
                             <button type="submit" style={loginStyles.loginBtn}>{loginPage ? 'SIGN IN' : 'SIGN UP'}</button>
                             OR
                             <button onClick={() => toggleLoginConteiner(loginPage ? 'sign-up' : 'sign-in')} type="button" style={loginStyles.loginBtn}>
-                                {loginPage ? 'GO TO SIGN IN' : 'GO TO SIGN UP'}
+                                {loginPage ? 'GO TO SIGN UP' : 'GO TO SIGN IN'}
                             </button>
                         </div>
 
