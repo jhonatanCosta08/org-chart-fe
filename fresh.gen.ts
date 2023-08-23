@@ -4,10 +4,10 @@
 
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/dashboard.tsx";
-import * as $3 from "./routes/index.tsx";
-import * as $4 from "./routes/login.tsx";
-import * as $5 from "./routes/auth/index.ts";
+import * as $2 from "./routes/auth/index.ts";
+import * as $3 from "./routes/dashboard.tsx";
+import * as $4 from "./routes/index.tsx";
+import * as $5 from "./routes/login.tsx";
 import * as $6 from "./routes/person/[id].ts";
 import * as $7 from "./routes/person/index.ts";
 import * as $8 from "./routes/position/[id].ts";
@@ -27,10 +27,10 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $0,
     "./routes/_app.tsx": $1,
-    "./routes/dashboard.tsx": $2,
-    "./routes/index.tsx": $3,
-    "./routes/login.tsx": $4,
-    "./routes/login/index.ts": $5,
+    "./routes/auth/index.ts": $2,
+    "./routes/dashboard.tsx": $3,
+    "./routes/index.tsx": $4,
+    "./routes/login.tsx": $5,
     "./routes/person/[id].ts": $6,
     "./routes/person/index.ts": $7,
     "./routes/position/[id].ts": $8,
