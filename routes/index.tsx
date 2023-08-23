@@ -1,9 +1,9 @@
-import Login from "./login.tsx";
+import LoginIsland from "../islands/login-island/login-island.tsx";
 
 export default function Home() {
   return (
     <>
-        <Login/>
+        <LoginIsland/>
     </>
   );
 }

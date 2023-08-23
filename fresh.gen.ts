@@ -4,14 +4,12 @@
 
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/auth/index.ts";
-import * as $3 from "./routes/dashboard.tsx";
-import * as $4 from "./routes/index.tsx";
-import * as $5 from "./routes/login.tsx";
-import * as $6 from "./routes/person/[id].ts";
-import * as $7 from "./routes/person/index.ts";
-import * as $8 from "./routes/position/[id].ts";
-import * as $9 from "./routes/position/index.ts";
+import * as $2 from "./routes/dashboard.tsx";
+import * as $3 from "./routes/index.tsx";
+import * as $4 from "./routes/person/[id].ts";
+import * as $5 from "./routes/person/index.ts";
+import * as $6 from "./routes/position/[id].ts";
+import * as $7 from "./routes/position/index.ts";
 import * as $$0 from "./islands/drawer/drawer-styles.ts";
 import * as $$1 from "./islands/drawer/drawer.tsx";
 import * as $$2 from "./islands/login-island/login-island.tsx";
@@ -27,14 +25,12 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $0,
     "./routes/_app.tsx": $1,
-    "./routes/auth/index.ts": $2,
-    "./routes/dashboard.tsx": $3,
-    "./routes/index.tsx": $4,
-    "./routes/login.tsx": $5,
-    "./routes/person/[id].ts": $6,
-    "./routes/person/index.ts": $7,
-    "./routes/position/[id].ts": $8,
-    "./routes/position/index.ts": $9,
+    "./routes/dashboard.tsx": $2,
+    "./routes/index.tsx": $3,
+    "./routes/person/[id].ts": $4,
+    "./routes/person/index.ts": $5,
+    "./routes/position/[id].ts": $6,
+    "./routes/position/index.ts": $7,
   },
   islands: {
     "./islands/drawer/drawer-styles.ts": $$0,
